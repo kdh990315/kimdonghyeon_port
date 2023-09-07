@@ -2,85 +2,87 @@
 	<section id="header">
 		<header>
 			<div class="logo_box">
-				<img src = "http://placehold.it/50X50" />
+				<img src="http://placehold.it/100x100" />
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#">더미 메뉴</a></li>
-					<li><a href="#">더미 메뉴</a></li>
-					<li><a href="#">더미 메뉴</a></li>
-					<li><a href="#">더미 메뉴</a></li>
-					<li><a href="#">더미 메뉴</a></li>
+					<li v-for="(menu, index) in headerMenu" :key="index">
+						<a :href="menu.url"><span>.0{{ index + 1}}</span>{{ menu.menu }}</a>
+					</li>
 				</ul>
 			</nav>
+
+			<div class="header_mobile_nav" @click="HeaderMobileEvent" :class="{ show: isvisible }">
+				<span></span>
+			</div>
+
+			<div class="header_moblie" :class="{ show: isvisible }">
+				<ul>
+					<li v-for="(menu, index) in headerMenu" :key="index">
+						<a :href="menu.url">{{ menu.menu }}</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa-brands fa-square-instagram"></i>
+						</a>
+						<a href="#">
+							<i class="fa-brands fa-instagram"></i>
+						</a>
+						<a href="#">
+							<i class="fa-regular fa-envelope-open"></i>
+						</a>
+						<a href="#">
+							<i class="fa-solid fa-phone"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+
 		</header>
 		<aside>
 			<div class="icon_box">
-				<i class="fa-brands fa-square-instagram"></i> 
-				<i class="fa-brands fa-instagram"></i>
-
-				<i class="fa-regular fa-envelope-open"></i>	
-
-				<i class="fa-solid fa-phone"></i>
+				<a href="#">
+					<i class="fa-brands fa-square-instagram"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+				<a href="#">
+					<i class="fa-regular fa-envelope-open"></i>
+				</a>
+				<a href="#">
+					<i class="fa-solid fa-phone"></i>
+				</a>
 			</div>
 		</aside>
 	</section>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/mixin.scss';
+<script>
+export default {
+	data() {
+		return {
+			headerMenu: [
+				{menu: 'dummy', url: '#'},
+				{menu: 'dummy', url: '#'},
+				{menu: 'dummy', url: '#'},
+				{menu: 'dummy', url: '#'},
+				{menu: 'dummy', url: '#'},
+			],
 
-#header {
-
-	header {
-		width: 94%;
-		height: 100px;
-		margin: 0 auto;
-		position: fixed;
-		top: 30px;
-		left: 3%;
-		border: 1px solid #333;
-		backdrop-filter: blur(5px);
-		
-		@include center-sb;
-
-		.logo_box {
+			isvisible: false,
 
 		}
-
-		nav {
-
-			ul {
-				width: 600px;
-				margin-right: 50px;
-				@include center-sb
-			}
-		}
-	}
-
-	aside {
-		width: 100px;
-		height: 600px;
-		position: fixed;
-		top: 131px;
-		left: 3%;
-		border-left: 1px solid #333;
-		border-right: 1px solid #333;
-		border-bottom: 1px solid #333; 
-		backdrop-filter: blur(5px);
-		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-
-		.icon_box {
-			height: 300px;
-
-			@include c-center-se;
-
-			i {
-				font-size: 30px;
-			}
+	},
+	methods: {
+		HeaderMobileEvent() {
+			this.isvisible = !this.isvisible;
 		}
 	}
 }
+</script>
+
+<style lang="scss" scoped>
+@import '@/scss/mixin.scss';
+@import '@/scss/HeaderView.scss';
 </style>		

@@ -9,5 +9,7 @@ export default {}
 <style lang="scss">
 @import "@/scss/reset.scss";
 
-
+body {
+  background-color: black;
+}
 </style>
