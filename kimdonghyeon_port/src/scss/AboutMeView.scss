@@ -1,0 +1,168 @@
+@charset 'utf-8';
+
+.about_me_container {
+	max-width: 80%;
+	margin: 0 auto 0 15%;
+
+	.about_me_title {
+
+		h2 {
+			@include title-text;
+		}
+
+		h3 {
+			font-size: 2vw;
+			padding: 1rem 0;
+		}
+	}
+
+	.about_me_info {
+		width: 100%;
+		
+		@include center-sb;
+		.about_me_text {
+			width: 75%;
+			margin-top: 50px;
+
+			p {
+				line-height: 1.8;
+				font-size: 18px;
+				font-weight: 600;
+			}
+		}
+
+		.about_me_portrait {
+			width: 300px;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (max-width: 800px) {
+		width: 100%;
+		margin: 0 auto;
+		text-align:  center;
+
+		.about_me_title {
+
+			h2 {
+				font-size: 4rem;
+			}
+			
+			h3 {
+				font-size: 1.6rem;
+			}
+		}
+
+		.about_me_info {
+			display: flex;
+			align-items: center;
+			flex-direction: column-reverse;
+
+			.about_me_text {
+				width: 100%;
+				text-align: center;
+			}
+
+			.about_me_portrait {
+				width: 300px;
+
+				img {
+					width: 80%;
+					padding: 15px 0 30px 0;
+				}
+			}
+		}
+	}
+}
+
+.skill_wrap {
+	width: 80%;
+	margin: 150px auto 0 15%;
+
+	.skill_title {
+		margin-bottom: 50px;
+
+		h3 {
+			@include title-text;
+		}
+	}
+
+	.skill_container {
+		@include center-sb;
+		
+		.chart {
+			text-align: center;
+
+			.charts {
+				position: relative;
+	
+				p {
+					@include position-center;
+					font-size: 25px;
+					font-weight: 600;
+				}
+	
+				svg {
+					width: 220px;
+					height: 220px;
+	
+					circle {
+						fill: #333;
+						stroke-width: 20px;
+						stroke: #fff;
+						stroke-dasharray: 628;
+						stroke-dashoffset: 628;
+						// animation: circle 2s forwards;
+						transform: rotate(-90deg);
+						transform-origin: 50% 50%;
+						stroke-linecap: round;
+						transition: all 2s;
+					}
+
+
+				}
+			}
+
+			span {
+				font-size: 20px;
+   				line-height: 1.8;
+				font-family: 'Poppins', sans-serif;
+			}
+		}
+	}
+
+	@media (max-width: 1100px) {
+		width: 85%;
+		margin-left: 15%;
+
+		.skill_title {
+			text-align: center;
+			
+			h3 {
+				font-size: 3rem;
+				margin-bottom: 15px;
+			}
+		}
+
+		.skill_container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			.chart {
+				width: 50%;
+				margin-bottom: 30px;
+			}
+		}
+	}
+
+	@media (max-width: 800px) {
+		width: 100%;
+		margin: 200px 0 0 0 ;
+	}
+}
