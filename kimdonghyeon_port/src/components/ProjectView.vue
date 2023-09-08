@@ -14,8 +14,10 @@
 						<p class="project_mainText">{{ port.mainText }}</p>
 						<p class="project_subText">{{ port.subText }}</p>
 						<div class="project_btn_box">
-							<a :href="port.siteURL">site view</a>
-							<a :href="port.codeURL">code view</a>
+							<!-- <a :href="port.siteURL">site view</a>
+							<a :href="port.codeURL">code view</a> -->
+							<base-button :href="port.siteURL">site view</base-button>
+							<base-button :href="port.siteURL">code view</base-button>
 						</div>
 					</div>
 				</article>
@@ -131,14 +133,6 @@ export default {
 					margin-top: 50px;
 
 					@include center-sb;
-
-					a {
-						display: block;
-						font-size: 1.2rem;
-						color: black;
-						padding: 8px 15px;
-						background-color: #ccc;
-					}
 				}
 			}
 
@@ -180,6 +174,11 @@ export default {
 	@media (max-width: 800px) {
 		width: 100%;
 		margin: 150px auto 0 auto;
+
+		img {
+			width: calc(100% - 30px);
+			border-radius: 20px;
+		}
 	}
 }
 </style>

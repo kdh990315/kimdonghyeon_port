@@ -12,6 +12,7 @@
 		left: 3%;
 		border: 1px solid #333;
 		backdrop-filter: blur(5px);
+		z-index: 100000;
 
 		@include center-sb;
 
@@ -200,6 +201,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
+		z-index: 10000;
 
 		.icon_box {
 			height: 300px;
