@@ -7,7 +7,9 @@
 			<nav>
 				<ul>
 					<li v-for="(menu, index) in headerMenu" :key="index">
-						<a :href="menu.url"><span>.0{{ index + 1}}</span>{{ menu.menu }}</a>
+						<a :href="menu.url" @click="HeaderAnchor($event)">
+							<span>.0{{ index + 1 }}</span>{{ menu.menu }}
+						</a>
 					</li>
 				</ul>
 			</nav>
@@ -63,11 +65,11 @@ export default {
 	data() {
 		return {
 			headerMenu: [
-				{menu: 'dummy', url: '#'},
-				{menu: 'dummy', url: '#'},
-				{menu: 'dummy', url: '#'},
-				{menu: 'dummy', url: '#'},
-				{menu: 'dummy', url: '#'},
+				{ menu: 'intro', url: '#intro' },
+				{ menu: 'about me', url: '#about_me' },
+				{ menu: 'project', url: '#project' },
+				{ menu: 'script', url: '#script' },
+				{ menu: 'footer', url: '#footer' },
 			],
 
 			isvisible: false,
@@ -77,8 +79,17 @@ export default {
 	methods: {
 		HeaderMobileEvent() {
 			this.isvisible = !this.isvisible;
+		},
+		HeaderAnchor(event) {
+			event.preventDefault();
+			let targetLink = event.target.getAttribute('href');
+			let targetEl = document.querySelector(targetLink);
+
+			if(targetEl) {
+				targetEl.scrollIntoView({behavior : "smooth"});
+			}
 		}
-	}
+	},
 }
 </script>
 

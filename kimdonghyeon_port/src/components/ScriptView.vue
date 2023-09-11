@@ -115,10 +115,10 @@ export default {
 
 	methods: {
 		scrollAnimation() {
-			const horSection = gsap.utils.toArray(".contents");
+			const contents = gsap.utils.toArray(".contents");
 
-			gsap.to(horSection, {
-				xPercent: -130 * (horSection.length - 1),
+			gsap.to(contents, {
+				xPercent: -130 * (contents.length - 1),
                 ease: "none",
                 scrollTrigger: {
                     trigger: "#script",

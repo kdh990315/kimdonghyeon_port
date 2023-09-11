@@ -25,11 +25,5 @@ export default {
 		ScriptView,
 		FooterView
 	},
-	data() {
-		return {
-
-		}
-	},
-
 }
 </script>
