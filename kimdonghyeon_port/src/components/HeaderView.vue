@@ -2,7 +2,7 @@
 	<section id="header">
 		<header>
 			<div class="logo_box">
-				<img src="http://placehold.it/100x100" />
+				<div class="logo"></div>
 			</div>
 			<nav>
 				<ul>
@@ -20,21 +20,12 @@
 
 			<div class="header_moblie" :class="{ show: isvisible }">
 				<ul>
-					<li v-for="(menu, index) in headerMenu" :key="index">
-						<a :href="menu.url">{{ menu.menu }}</a>
+					<li v-for="(menu, index) in headerMenu" :key="index" class="mobil_menu">
+						<a :href="menu.url" @click="HeaderAnchor($event)">{{ menu.menu }}</a>
 					</li>
-					<li>
-						<a href="#">
-							<i class="fa-brands fa-square-instagram"></i>
-						</a>
-						<a href="#">
-							<i class="fa-brands fa-instagram"></i>
-						</a>
-						<a href="#">
-							<i class="fa-regular fa-envelope-open"></i>
-						</a>
-						<a href="#">
-							<i class="fa-solid fa-phone"></i>
+					<li class="mobil_menu">
+						<a :href="icon.href" v-for="(icon, index) in icons" :key="index">
+							<i :class="icon.iconName"></i>
 						</a>
 					</li>
 				</ul>
@@ -43,24 +34,21 @@
 		</header>
 		<aside>
 			<div class="icon_box">
-				<a href="#">
-					<i class="fa-brands fa-square-instagram"></i>
-				</a>
-				<a href="#">
-					<i class="fa-brands fa-instagram"></i>
-				</a>
-				<a href="#">
-					<i class="fa-regular fa-envelope-open"></i>
-				</a>
-				<a href="#">
-					<i class="fa-solid fa-phone"></i>
-				</a>
+				<div v-for="(icon, index) in icons" :key="index">
+					<i :class="icon.iconName"></i>
+					<div class="icon_sub">
+						<a :href="icon.href">{{ icon.text }}</a>
+					</div>
+				</div>
+
 			</div>
 		</aside>
 	</section>
 </template>
 
 <script>
+import gsap from "gsap";
+
 export default {
 	data() {
 		return {
@@ -71,6 +59,12 @@ export default {
 				{ menu: 'script', url: '#script' },
 				{ menu: 'footer', url: '#footer' },
 			],
+			icons: [
+				{ href: 'https://instagram.com/dd_dodd_odo?igshid=MzRlODBiNWFlZA==', iconName: "fa-brands fa-square-instagram", text: '인스타그램 바로 가기' },
+				{ href: 'https://blog.naver.com/dh_dv_note', iconName: "fa-brands fa-blogger", text: '개인 블로그 바로가기'  },
+				{ href: '#', iconName: "fa-solid fa-square-envelope", text: 'kdh990315@naver.com'},
+				{ href: '#', iconName: "fa-solid fa-square-phone", text: '010 - 5509 - 3095'},
+			],
 
 			isvisible: false,
 
@@ -79,6 +73,21 @@ export default {
 	methods: {
 		HeaderMobileEvent() {
 			this.isvisible = !this.isvisible;
+
+			let mobil_menu = document.querySelectorAll('.mobil_menu');
+
+			if(this.isvisible) {
+				gsap.to(mobil_menu, {
+					xPercent: 120,
+					duration: .9,
+					stagger: 0.2,
+					ease: "elastic.out(1, 0.3)"
+				});
+			} else {
+				gsap.to(mobil_menu, {
+					xPercent: -120,
+				})
+			}
 		},
 		HeaderAnchor(event) {
 			event.preventDefault();
@@ -88,12 +97,15 @@ export default {
 			if(targetEl) {
 				targetEl.scrollIntoView({behavior : "smooth"});
 			}
-		}
+
+			if(this.isvisible) this.isvisible = false;
+		},
+
+
 	},
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/mixin.scss';
 @import '@/scss/HeaderView.scss';
 </style>		

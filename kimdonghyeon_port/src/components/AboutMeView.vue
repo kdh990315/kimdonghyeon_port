@@ -7,10 +7,8 @@
 			</div>
 			<div class="about_me_info">
 				<div class="about_me_text">
-					<p>더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.</p>
-					<p>더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.</p>
-					<p>더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.</p>
-					<p>더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.더미 텍스트입니다.</p>
+					<p>안녕하세요! 하</p><br>
+					<p>asdasd</p>
 				</div>
 				<div class="about_me_portrait">
 					<img src="@/assets/images/portrait.jpg" alt="증명사진">
@@ -81,7 +79,6 @@ export default {
 			}
 		},
 		svgAnimation() {
-			
 			let chart = document.querySelectorAll('.charts > p'),
 				circle = document.querySelectorAll('circle');
 

@@ -2,13 +2,14 @@
 	<section id="script">
 		<div class="script_container">
 			<div class="script_title">
-				<h3>script</h3><p>작업물</p>
+				<h3>script</h3>
+				<p>작업물</p>
 				<div class="script_line"></div>
 			</div>
 			<div class="script_contents">
 				<div class="contents" v-for="(content, index) in scrpitContents" :key="index">
 					<div class="contents_left">
-						<img src = "http://placehold.it/700X400" />
+						<img src="http://placehold.it/700X400" />
 					</div>
 					<div class="contents_right">
 						<p class="num">{{ index + 1 }}.</p>
@@ -32,7 +33,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
-	mounted: function() {
+	mounted: function () {
 		this.scrollAnimation();
 
 	},
@@ -117,20 +118,54 @@ export default {
 		scrollAnimation() {
 			const contents = gsap.utils.toArray(".contents");
 
-			gsap.to(contents, {
-				xPercent: -130 * (contents.length - 1),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "#script",
-                    start: "top 130px",
-                    end: "+=9000",
-                    pin: true,
-                    scrub: 1,
-                    markers: false,
-                    invalidateOnRefresh: true,
-                    anticipatePin: 1,
-                },
-			});
+			// gsap.to(contents, {
+			// 	xPercent: -125 * (contents.length - 1),
+			//     ease: "none",
+			//     scrollTrigger: {
+			//         trigger: "#script",
+			//         start: "top 130px",
+			//         end: "+=9000",
+			//         pin: true,
+			//         scrub: 1,
+			//         markers: false,
+			//         invalidateOnRefresh: true,
+			//         anticipatePin: 1,
+			//     }
+			// });
+			ScrollTrigger.matchMedia({
+				"(min-width: 800px)": function () {
+					gsap.to(contents, {
+						xPercent: -125 * (contents.length - 1),
+						ease: "none",
+						scrollTrigger: {
+							trigger: "#script",
+							start: "top 130px",
+							end: "+=9000",
+							pin: true,
+							scrub: 1,
+							markers: false,
+							invalidateOnRefresh: true,
+							anticipatePin: 1,
+						}
+					});
+				},
+				"(max-width: 799px)": function () {
+					gsap.to(contents, {
+						xPercent: -145 * (contents.length - 1),
+						ease: "none",
+						scrollTrigger: {
+							trigger: "#script",
+							start: "top 130px",
+							end: "+=12000",
+							pin: true,
+							scrub: 1,
+							markers: false,
+							invalidateOnRefresh: true,
+							anticipatePin: 1,
+						}
+					});
+				},
+			})
 		}
 	}
 }
@@ -147,7 +182,7 @@ export default {
 	.script_container {
 		max-width: 80%;
 		margin: 0 auto 0 15%;
-		
+
 		.script_title {
 			color: #fff;
 			width: 100%;
@@ -166,7 +201,7 @@ export default {
 				display: inline-block;
 				margin-left: 20px;
 			}
-			
+
 			.script_line {
 				width: 55%;
 				height: 2px;
@@ -210,6 +245,7 @@ export default {
 						font-size: 3vw;
 						font-weight: 900;
 					}
+
 					.line {
 						width: 100%;
 						height: 5px;
@@ -245,7 +281,7 @@ export default {
 
 		.script_container {
 			margin: 0 auto;
-		
+
 			.script_contents {
 
 				.contents {
@@ -261,7 +297,7 @@ export default {
 							width: 400px;
 						}
 					}
-					
+
 					.contents_right {
 						width: 100%;
 

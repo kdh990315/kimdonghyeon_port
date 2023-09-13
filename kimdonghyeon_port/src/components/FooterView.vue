@@ -54,19 +54,13 @@ export default {
 				scrollTrigger: {
 					trigger: footer_box,
 					start: "top 50%",
-					end: "bottom 80%",
+					end: "bottom 50%",
 					scrub: 1,
 					markers: false,
-					onEnter: () => {
-						if(!this.footerisvisible) {
-							this.footerisvisible = true;
-						}
-					},
-					onLeaveBack: () => {
-						if(this.footerisvisible) {
-							this.footerisvisible = false;
-						}
-					},
+					onToggle: (self) => {
+						self.isActive ? this.footerisvisible = true : this.footerisvisible = false;
+						console.log(self.isActive)
+					}
 				},
 			});
 		}
@@ -79,7 +73,7 @@ export default {
 
 .footer_container {
 	max-width: 80%;
-	height: 100vh;
+	height: 80vh;
 	margin: 250px auto 0 15%;
 
 	.footer_wrap {
@@ -158,7 +152,7 @@ export default {
 
 					em {
 						margin-left: 40px;
-						font-size: 1.2vw;
+						font-size: 1vw;
 						opacity: 0;
 						transition: opacity .3s;
 					}
@@ -179,7 +173,6 @@ export default {
 		.footer_wrap {
 			@include c-center;
 			padding: 12vw 0;
-			background-color: rebeccapurple;
 
 			.footer_left {
 				width: 80%;
