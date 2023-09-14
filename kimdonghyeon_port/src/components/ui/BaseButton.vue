@@ -1,5 +1,5 @@
 <template>
-	<a :href="href">
+	<a :href="href" target="_blank">
 		<slot></slot>
 	</a>
 </template>

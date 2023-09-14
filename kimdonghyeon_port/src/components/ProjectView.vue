@@ -10,14 +10,11 @@
 				<article class="project_content" v-for="(port, index) in projectInfo" :key="index">
 					<span>{{ index + 1 }}.</span>
 					<div class="project_info">
-						<img :src="port.src" />
+						<img :src="port.src" :alt="port.alt"/>
 						<p class="project_mainText">{{ port.mainText }}</p>
 						<p class="project_subText">{{ port.subText }}</p>
 						<div class="project_btn_box">
-							<!-- <a :href="port.siteURL">site view</a>
-							<a :href="port.codeURL">code view</a> -->
 							<base-button :href="port.siteURL">site view</base-button>
-							<base-button :href="port.siteURL">code view</base-button>
 						</div>
 					</div>
 				</article>
@@ -32,32 +29,32 @@ export default {
 		return {
 			projectInfo: [
 				{
-					src: "http://placehold.it/500X300",
-					mainText: "main 더미텍스트입니다.",
-					subText: "sub 더미 텍스트입니다. html 시멘틱태그를 이용하여 가장 기본적인 웹페이지를 만들었습니다.",
-					siteURL: "#",
-					codeURL: "#",
+					src: "/images/proj1.png",
+					alt: "사이트1",
+					mainText: "밀리의 서재",
+					subText: "밀리의 서재를 클론코딩하였습니다. ajex로 통해 kakao API를 가져와 사용했습니다.",
+					siteURL: "https://kdh990315.github.io/project06_ajax/",
 				},
 				{
 					src: "http://placehold.it/500X300",
+					alt: "사이트2",
 					mainText: "main 더미텍스트입니다.",
 					subText: "suv 더미텍스트입니다.",
 					siteURL: "#",
-					codeURL: "#",
 				},
 				{
 					src: "http://placehold.it/500X300",
+					alt: "사이트3",
 					mainText: "main 더미텍스트입니다.",
 					subText: "suv 더미텍스트입니다.",
 					siteURL: "#",
-					codeURL: "#",
 				},
 				{
 					src: "http://placehold.it/500X300",
+					alt: "사이트4",
 					mainText: "main 더미텍스트입니다.",
 					subText: "suv 더미텍스트입니다.",
 					siteURL: "#",
-					codeURL: "#",
 				},
 			],
 		}
@@ -110,6 +107,7 @@ export default {
 
 				img {
 					margin-bottom: 20px;
+					width: 600px;
 				}
 
 				p {
@@ -129,10 +127,7 @@ export default {
 				}
 
 				.project_btn_box {
-					width: 300px;
 					margin-top: 50px;
-
-					@include center-sb;
 				}
 			}
 
